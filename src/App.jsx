@@ -101,7 +101,7 @@ const QuoteForm = ({ isModal = false, onClose = null }) => {
           />
         </div>
 
-        <select
+        {/* <select
           name="service"
           value={formData.service}
           onChange={handleChange}
@@ -112,11 +112,11 @@ const QuoteForm = ({ isModal = false, onClose = null }) => {
           {services.map(service => (
             <option key={service} value={service}>{service}</option>
           ))}
-        </select>
+        </select> */}
 
         <textarea
           name="message"
-          placeholder="Tell us about your project..."
+          placeholder="Tell us about the work you need done..."
           value={formData.message}
           onChange={handleChange}
           rows="3"
@@ -202,7 +202,7 @@ const App = () => {
             <div className="hidden md:flex items-center space-x-4">
               <div className="flex items-center text-sm text-gray-600">
                 <Phone size={16} className="mr-1" />
-                <span>087 123 4567</span>
+                <span>+353 87 288 8202</span>
               </div>
               <button
                 onClick={() => setShowQuoteModal(true)}
@@ -230,7 +230,7 @@ const App = () => {
                 <a href="#contact" className="text-gray-700 hover:text-emerald-600 font-medium">Contact</a>
                 <div className="flex items-center text-sm text-gray-600 pt-2 border-t">
                   <Phone size={16} className="mr-1" />
-                  <span>087 123 4567</span>
+                  <span>087 288 8202</span>
                 </div>
                 <button
                   onClick={() => setShowQuoteModal(true)}
@@ -271,7 +271,7 @@ const App = () => {
                   Get Free Quote <ArrowRight size={20} />
                 </button>
                 <a
-                  href="tel:0871234567"
+                  href="tel:0872888202"
                   className="border-2 border-emerald-600 text-emerald-600 px-8 py-4 rounded-lg font-semibold hover:bg-emerald-600 hover:text-white transition-colors flex items-center justify-center gap-2"
                 >
                   <Phone size={20} /> Call Now
@@ -367,7 +367,7 @@ const App = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
               <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-6">
-                Why Choose Finnegan Electrical?
+                Why Choose Volt Safe?
               </h2>
               
               <div className="space-y-6">
@@ -377,7 +377,7 @@ const App = () => {
                   </div>
                   <div>
                     <h3 className="font-semibold text-gray-900 mb-2">Local Expertise, Nationwide Service</h3>
-                    <p className="text-gray-600">Based in North Galway, Finnegan Electrical serves all of Ireland with reliable, quality electrical solutions.</p>
+                    <p className="text-gray-600">Based in North Galway, Volt Safe serves all of Ireland with reliable, quality electrical solutions.</p>
                   </div>
                 </div>
 
@@ -387,7 +387,7 @@ const App = () => {
                   </div>
                   <div>
                     <h3 className="font-semibold text-gray-900 mb-2">Safe Electric Approved</h3>
-                    <p className="text-gray-600">Finnegan Electrical is a Registered Electrical Contractor with Safe Electric, qaulifying customers for SEAI grants.</p>
+                    <p className="text-gray-600">Volt Safe is a Registered Electrical Contractor with Safe Electric, qaulifying customers for SEAI grants.</p>
                   </div>
                 </div>
 
@@ -397,7 +397,7 @@ const App = () => {
                   </div>
                   <div>
                     <h3 className="font-semibold text-gray-900 mb-2">Over 30 Years Experience</h3>
-                    <p className="text-gray-600">Finnegan Electrical has been contracted across Ireland and Europe, accumulating to over three decades of experience.</p>
+                    <p className="text-gray-600">Volt Safe has been contracted across Ireland and Europe, accumulating to over three decades of experience.</p>
                   </div>
                 </div>
               </div>
@@ -467,7 +467,7 @@ const App = () => {
                 </div>
                 <div>
                   <div className="font-semibold text-gray-900">Call Us</div>
-                  <div className="text-gray-600">087 123 4567</div>
+                  <div className="text-gray-600">087 288 8202</div>
                 </div>
               </div>
 
@@ -519,11 +519,11 @@ const App = () => {
                 Professional electrical services across Ireland. SEAI approved contractor specialising in modern, eco-friendly solutions.
               </p>
               <div className="flex items-center gap-4 text-sm">
-                <span>SEAI Approved</span>
+                <span>Safe Electric & SEAI Registered</span>
                 <span>•</span>
                 <span>Fully Insured</span>
                 <span>•</span>
-                <span>Licensed</span>
+                <span>Decades of Experience</span>
               </div>
             </div>
 
@@ -540,8 +540,8 @@ const App = () => {
             <div>
               <h4 className="font-semibold text-white mb-4">Contact</h4>
               <ul className="space-y-2 text-sm">
-                <li>087 123 4567</li>
-                <li>info@finneganelectrical.ie</li>
+                <li>087 288 8202</li>
+                <li>jpjfinnegan@gmail.com</li>
                 <li>Galway, Ireland</li>
                 <li>Nationwide Service</li>
               </ul>
@@ -549,7 +549,7 @@ const App = () => {
           </div>
 
           <div className="border-t border-gray-800 mt-8 pt-8 text-center text-sm text-gray-400">
-            <p>&copy; 2025 Finnegan Electrical. All rights reserved.</p>
+            <p>&copy; 2025 Volt Safe. All rights reserved.</p>
           </div>
         </div>
       </footer>

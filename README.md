@@ -1,13 +1,17 @@
-# Finnegan Electrical Website
+# Volt Safe Website
+
+Landing page for Volt Safe. The website aims to demonstrate Volt Safe's offering to customers in Galway City and peripheries and provides a clear call to action for those interested in availing of Volt Safe's services.
+
+## Preview 
+<img width="2540" height="1095" alt="image" src="https://github.com/user-attachments/assets/ec31aeaa-ac76-42d6-8ec9-2295e9a636ce" />
+
 
 ## To do
-- Get copy for text blocks, headers, etc.
-- Create SVG logo for Finnegan Electrical
-- Mailchimp forms integration for quote submission
-- Purchase finneganelectrical.ie domain from Hosting Ireland
-- Host using Github pages? 
-- Create info@finneganelectrical.ie email address
-- Comment out customer testimonials 
+- Write copy for text blocks, headers, etc.
+- Create SVG logo
+- Integration for storing customer lead details
+- Purchase voltsafe.ie domain from Hosting Ireland/ set up DNS routing/ create info@ email address
+- Publish site and promote with Ads
 
 
 

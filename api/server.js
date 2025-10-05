@@ -8,7 +8,10 @@ dotenv.config();
 const app = express();
 
 app.use(express.json());
-app.use(cors({ origin: "https://s3anfinnegan.github.io" }));
+app.use(cors({ origin: [
+    "https://s3anfinnegan.github.io", // optional: keep old domain
+    "https://www.voltsafe.ie"         // new custom domain
+  ] }));
 
 // Set SendGrid API key
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);

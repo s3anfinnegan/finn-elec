@@ -502,7 +502,7 @@ const App = () => {
                 </div>
                 <div>
                   <div className="font-semibold text-gray-900">Email Us</div>
-                  <div className="text-gray-600">jpjfinnegan@gmail.com</div>
+                  <div className="text-gray-600">info@voltsafe.ie</div>
                 </div>
               </div>
 
@@ -566,7 +566,7 @@ const App = () => {
               <h4 className="font-semibold text-white mb-4">Contact</h4>
               <ul className="space-y-2 text-sm">
                 <li>087 288 8202</li>
-                <li>jpjfinnegan@gmail.com</li>
+                <li>info@voltsafe.ie</li>
                 <li>Galway, Ireland</li>
                 <li>Nationwide Service</li>
               </ul>
@@ -574,7 +574,8 @@ const App = () => {
           </div>
 
           <div className="border-t border-gray-800 mt-8 pt-8 text-center text-sm text-gray-400">
-            <p>&copy; 2025 Volt Safe. All rights reserved.</p>
+            <p>&copy; 2025 Volt Safe. All rights reserved. </p>
+            <p> Website by Route 52 Engineering </p>
           </div>
         </div>
       </footer>

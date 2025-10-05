@@ -2,11 +2,11 @@ import React, { useState } from 'react';
 import { Phone, Mail, MapPin, Star, Zap, Battery, Car, Home, Award, CheckCircle, Users, Calendar, ArrowRight, Menu, X } from 'lucide-react';
 
 // Logo Component (SVG)
-const FinneganLogo = ({ className = "h-8 w-auto" }) => (
-  <svg className={className} viewBox="0 0 200 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+const VoltSafeLogo = ({ className = "h-8 w-auto" }) => (
+  <svg className={className} viewBox="0 0 180 60" fill="none" xmlns="http://www.w3.org/2000/svg">
     <circle cx="30" cy="30" r="25" fill="#10B981" stroke="#059669" strokeWidth="2"/>
-    <path d="M20 30 L26 36 L40 22" stroke="white" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
-    <text x="70" y="25" fill="#1F2937" fontSize="18" fontWeight="bold" fontFamily="sans-serif">FINNEGAN</text>
+    <path d="M38 18 L32 30 L36 30 L28 42 L34 30 L30 30 L38 18 Z" fill="white" stroke="white" strokeWidth="1"/>
+    <text x="70" y="25" fill="#1F2937" fontSize="18" fontWeight="bold" fontFamily="sans-serif">VOLT SAFE</text>
     <text x="70" y="42" fill="#059669" fontSize="12" fontWeight="500" fontFamily="sans-serif">ELECTRICAL</text>
   </svg>
 );
@@ -32,12 +32,36 @@ const QuoteForm = ({ isModal = false, onClose = null }) => {
     'Other'
   ];
 
-  const handleSubmit = () => {
-    // In production, integrate with Mailchimp API
-    console.log('Form submitted:', formData);
-    alert('Thank you! We\'ll contact you within 24 hours with your free quote.');
-    if (onClose) onClose();
-  };
+  const handleSubmit = async (e) => {
+  e.preventDefault();
+
+    try {
+      const response = await fetch("http://localhost:5000/send-quote", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        alert("✅ Thank you! We’ll contact you within 24 hours with your free quote.");
+        setFormData({
+          name: "",
+          email: "",
+          phone: "",
+          service: "",
+          location: "",
+          message: "",
+        });
+        if (onClose) onClose();
+      } else {
+        alert("⚠️ Something went wrong. Please try again later.");
+      }
+    } catch (error) {
+      alert("⚠️ Unable to send your message. Please check your internet connection.");
+      console.error(error);
+    }
+};
+
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -93,7 +117,7 @@ const QuoteForm = ({ isModal = false, onClose = null }) => {
           <input
             type="text"
             name="location"
-            placeholder="Your Location"
+            placeholder="Your Location, e.g. Tuam"
             value={formData.location}
             onChange={handleChange}
             required
@@ -116,7 +140,7 @@ const QuoteForm = ({ isModal = false, onClose = null }) => {
 
         <textarea
           name="message"
-          placeholder="Tell us about the work you need done..."
+          placeholder="Tell us about the work you need done"
           value={formData.message}
           onChange={handleChange}
           rows="3"
@@ -189,7 +213,7 @@ const App = () => {
       <header className="bg-white shadow-sm sticky top-0 z-40">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center py-4">
-            <FinneganLogo />
+            <VoltSafeLogo />
             
             {/* Desktop Navigation */}
             <nav className="hidden md:flex space-x-8">
@@ -251,7 +275,7 @@ const App = () => {
             <div>
               <div className="flex items-center gap-2 mb-4">
                 <Award className="w-6 h-6 text-emerald-600" />
-                <span className="text-emerald-700 font-semibold">SEAI Approved Contractor</span>
+                <span className="text-emerald-700 font-semibold">Safe Electric Registered Contractor</span>
               </div>
               
               <h1 className="text-4xl lg:text-6xl font-bold text-gray-900 mb-6">
@@ -477,7 +501,7 @@ const App = () => {
                 </div>
                 <div>
                   <div className="font-semibold text-gray-900">Email Us</div>
-                  <div className="text-gray-600">info@finneganelectrical.ie</div>
+                  <div className="text-gray-600">jpjfinnegan@gmail.com</div>
                 </div>
               </div>
 
@@ -514,7 +538,7 @@ const App = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             <div className="md:col-span-2">
-              <FinneganLogo className="h-10 w-auto mb-4 brightness-0 invert" />
+              <VoltSafeLogo className="h-10 w-auto mb-4 brightness-0 invert" />
               <p className="text-gray-400 mb-4">
                 Professional electrical services across Ireland. SEAI approved contractor specialising in modern, eco-friendly solutions.
               </p>

@@ -575,7 +575,17 @@ const App = () => {
 
           <div className="border-t border-gray-800 mt-8 pt-8 text-center text-sm text-gray-400">
             <p>&copy; 2025 Volt Safe. All rights reserved. </p>
-            <p> Website by Route 52 Engineering </p>
+            <p>
+            Website 🛠️ by{" "}
+            <a
+              href="https://www.linkedin.com/in/sean-finnegan-/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline hover:text-emerald-600"
+            >
+              Route 52 Engineering
+            </a>
+          </p>
           </div>
         </div>
       </footer>

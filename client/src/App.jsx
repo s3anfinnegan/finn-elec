@@ -36,7 +36,7 @@ const QuoteForm = ({ isModal = false, onClose = null }) => {
   e.preventDefault();
 
     try {
-      const response = await fetch("https://voltsafe-api.onrender.com", {
+      const response = await fetch("https://voltsafe-api.onrender.com/send-quote", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),

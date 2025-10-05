@@ -5,11 +5,18 @@ import cors from "cors";
 
 dotenv.config();
 const app = express();
-app.use(cors());
+
+// Restrict CORS to your GitHub Pages front-end
+app.use(cors({ origin: "https://your-username.github.io" }));
 app.use(express.json());
 
 app.post("/send-quote", async (req, res) => {
   const { name, email, phone, location, message } = req.body;
+
+  // Basic validation
+  if (!name || !email || !message) {
+    return res.status(400).json({ success: false, error: "Missing required fields" });
+  }
 
   const transporter = nodemailer.createTransport({
     host: "smtp.gmail.com",
@@ -17,7 +24,7 @@ app.post("/send-quote", async (req, res) => {
     secure: true,
     auth: {
       user: process.env.GOOGLE_SMTP_USER,
-      pass: process.env.GOOGLE_SMTP_PASS,
+      pass: process.env.GOOGLE_SMTP_PASS, // App password if 2FA is enabled
     },
   });
 
@@ -37,14 +44,15 @@ ${message}
   };
 
   try {
-    await transporter.sendMail(mailOptions);
+    const info = await transporter.sendMail(mailOptions);
+    console.log("Email sent:", info.response); // log nodemailer response
     res.status(200).json({ success: true });
   } catch (err) {
-    console.error(err);
+    console.error("Nodemailer error:", err); // full error
     res.status(500).json({ success: false, error: err.message });
   }
 });
 
-const PORT = process.env.PORT || 5000; // use 5000 locally if PORT is undefined
+// Use Render's dynamic port
+const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
-

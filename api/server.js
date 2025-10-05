@@ -2,35 +2,28 @@ import express from "express";
 import nodemailer from "nodemailer";
 import dotenv from "dotenv";
 import cors from "cors";
+import sgMail from "@sendgrid/mail";
 
 dotenv.config();
 const app = express();
 
-// Restrict CORS to your GitHub Pages front-end
-app.use(cors({ origin: "https://your-username.github.io" }));
 app.use(express.json());
+app.use(cors({ origin: "https://s3anfinnegan.github.io" }));
+
+// Set SendGrid API key
+sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
 app.post("/send-quote", async (req, res) => {
   const { name, email, phone, location, message } = req.body;
 
-  // Basic validation
-  if (!name || !email || !message) {
-    return res.status(400).json({ success: false, error: "Missing required fields" });
-  }
+  // // Basic validation
+  // if (!name || !email || !message) {
+  //   return res.status(400).json({ success: false, error: "Missing required fields" });
+  // }
 
-  const transporter = nodemailer.createTransport({
-    host: "smtp.gmail.com",
-    port: 465,
-    secure: true,
-    auth: {
-      user: process.env.GOOGLE_SMTP_USER,
-      pass: process.env.GOOGLE_SMTP_PASS, // App password if 2FA is enabled
-    },
-  });
-
-  const mailOptions = {
-    from: `"Volt Safe Quote Form" <${process.env.GOOGLE_SMTP_USER}>`,
-    to: process.env.TO_EMAIL,
+  const msg = {
+    to: process.env.TO_EMAIL, // Your destination email
+    from: process.env.SENDGRID_FROM_EMAIL, // Must be a verified sender in SendGrid
     subject: `New Quote Request from ${name}`,
     text: `
 Name: ${name}
@@ -44,11 +37,11 @@ ${message}
   };
 
   try {
-    const info = await transporter.sendMail(mailOptions);
-    console.log("Email sent:", info.response); // log nodemailer response
+    const info = await sgMail.send(msg);
+    console.log("Email sent:", info);
     res.status(200).json({ success: true });
   } catch (err) {
-    console.error("Nodemailer error:", err); // full error
+    console.error("SendGrid error:", err);
     res.status(500).json({ success: false, error: err.message });
   }
 });
